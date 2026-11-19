@@ -1,94 +1,42 @@
 
-const messages = [
-    {
-        title: "For You ❤️",
-        text: "Det finns något jag vill säga till dig. Ta din tid och öppna mitt meddelande.",
-        button: "Öppna mitt hjärta ♡"
-    },
-    {
-        title: "I'm Sorry",
-        text: "Jag vet att jag har gjort dig ledsen. Jag önskar att jag hade hanterat saker annorlunda, och jag vill verkligen be om ursäkt.",
-        button: "Fortsätt läsa ♥"
-    },
-    {
-        title: "You Mean So Much",
-        text: "Du betyder väldigt mycket för mig. Jag uppskattar alla fina stunder vi har delat, och jag vill aldrig ta dem för givna.",
-        button: "Ett meddelande till ♡"
-    },
-    {
-        title: "From My Heart",
-        text: "Jag vet att ett förlåt inte automatiskt gör allting bra igen. Jag vill lyssna på dig, förstå hur du känner och visa genom mina handlingar att jag menar det.",
-        button: "Öppna det sista brevet ♥"
-    },
-    {
-        title: "I'm Truly Sorry ❤️",
-        text: "Jag hoppas att du kan förlåta mig när du känner dig redo. Du behöver inte svara nu. Jag ville bara säga från hjärtat att jag är ledsen. ❤️",
-        button: "Läs från början ↻"
-    }
-];
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-let currentStep = 0;
+    <title>From My Heart ❤️</title>
 
-const heading = document.getElementById("heading");
-const description = document.getElementById("description");
-const nextButton = document.getElementById("nextButton");
-const progress = document.getElementById("progress");
-const messageBox = document.getElementById("message");
+    <link rel="stylesheet" href="static/style.css">
+</head>
 
-function showMessage() {
-    const message = messages[currentStep];
+<body>
+    <div class="hearts" aria-hidden="true"></div>
 
-    heading.textContent = message.title;
-    description.textContent = message.text;
-    nextButton.textContent = message.button;
+    <main class="card">
+        <div class="symbol">♥</div>
 
-    messageBox.classList.remove("fade");
-    void messageBox.offsetWidth;
-    messageBox.classList.add("fade");
+        <p class="eyebrow">A MESSAGE FROM MY HEART</p>
 
-    progress.innerHTML = "";
+        <section id="message" aria-live="polite">
+            <h1 id="heading">For You ❤️</h1>
 
-    messages.forEach((_, index) => {
-        const dot = document.createElement("span");
-        dot.className = "dot";
+            <p id="description">
+                Det finns något jag vill säga till dig.
+                Ta din tid och öppna mitt meddelande.
+            </p>
+        </section>
 
-        if (index <= currentStep) {
-            dot.classList.add("active");
-        }
+        <div class="progress" id="progress"></div>
 
-        progress.appendChild(dot);
-    });
-}
+        <button id="nextButton" type="button">
+            Öppna mitt hjärta ♡
+        </button>
 
-nextButton.addEventListener("click", () => {
-    currentStep++;
+        <p class="footer">With love & sincerity</p>
+    </main>
 
-    if (currentStep >= messages.length) {
-        currentStep = 0;
-    }
-
-    showMessage();
-});
-
-function createHeart() {
-    const heart = document.createElement("span");
-    heart.className = "floating-heart";
-    heart.textContent = "♥";
-
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (10 + Math.random() * 15) + "px";
-    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
-
-    document.body.appendChild(heart);
-
-    heart.addEventListener("animationend", () => {
-        heart.remove();
-    });
-}
-
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(createHeart, 1300);
-}
-
-showMessage();
+    <script src="static/scripts.js"></script>
+</body>
+</html>
 
