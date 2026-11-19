@@ -1,1 +1,180 @@
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;600&display=swap');
+
+:root {
+    --gold: #e9c78f;
+    --cream: #fff1e5;
+    --wine: #3a0b1d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+    background: radial-gradient(
+        ellipse at top,
+        #752640 0%,
+        #390c20 48%,
+        #170711 100%
+    );
+    color: var(--cream);
+    font-family: "DM Sans", sans-serif;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    padding: 55px 35px 42px;
+    text-align: center;
+    border: 1px solid rgba(233, 199, 143, 0.45);
+    border-radius: 24px;
+    background: rgba(42, 9, 23, 0.8);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+}
+
+.symbol {
+    font-size: 55px;
+    color: var(--gold);
+    animation: heartbeat 2.5s infinite;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin: 25px 0;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(32px, 8vw, 46px);
+    line-height: 1.2;
+    color: var(--gold);
+}
+
+#description {
+    font-size: 16px;
+    line-height: 1.9;
+    min-height: 115px;
+    color: #f0dce0;
+}
+
+.progress {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin: 28px 0;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #805366;
+}
+
+.dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+button {
+    width: 100%;
+    padding: 17px 20px;
+    border: 1px solid var(--gold);
+    border-radius: 40px;
+    background: var(--gold);
+    color: var(--wine);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s, background 0.25s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    background: #ffe0a9;
+}
+
+.footer {
+    margin-top: 30px;
+    color: #c39ba9;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.fade {
+    animation: fadeIn 0.6s ease;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    color: #dca4b3;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 40px 23px 30px;
+    }
+
+    #description {
+        font-size: 15px;
+        min-height: 135px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
