@@ -1,4 +1,3 @@
-
 const messages = [
     {
         title: "For You ❤️",
@@ -91,5 +90,6 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 }
 
 showMessage();
+
 
 
